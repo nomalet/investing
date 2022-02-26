@@ -1,0 +1,4 @@
+include requirements/base.in
+include requirements/base.txt
+include versioneer.py
+include src/voxel/apps/sas/toolkit/_version.py
