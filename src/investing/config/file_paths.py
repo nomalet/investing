@@ -1,4 +1,4 @@
-"""Configuration data common to Toolkit."""
+"""Configuration data common to Investing."""
 
 # Environment imports
 from pathlib import Path
@@ -19,8 +19,11 @@ def setpath(filepath: Path):
 
 
 # Path to repo root
-root = Path(__file__).absolute().parents[6]
+root = Path(__file__).absolute().parents[3]
 setpath(root)
 
-# Path to test data
-test_data = setpath(root / "tests/test_data")
+# Path to data
+data_path = setpath(root / "data/")
+input_data = setpath(data_path / "input_data/")
+output_data = setpath(data_path / "output_data/")
+financial_statements = setpath(input_data / "raw_statements_data/")

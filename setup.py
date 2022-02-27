@@ -13,8 +13,6 @@ from setuptools import setup
 from setuptools.config import read_configuration
 
 config = read_configuration("setup.cfg")
-# See https://pypi.org/classifiers/
-classifiers = config["metadata"]["classifiers"]
-kwargs = {"classifiers": classifiers}
+kwargs = config["metadata"]
 
 setup(**kwargs)
