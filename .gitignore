@@ -41,6 +41,8 @@ mypy
 .mypy_cache
 .DS_Store
 *.DS_Store
+.DS_Store?
+._*
 .vscode
 
 data/*
