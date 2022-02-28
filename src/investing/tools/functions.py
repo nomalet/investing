@@ -1,4 +1,5 @@
 import imp
+import py_compile
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -102,33 +103,54 @@ def growth_calc(starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetu
     return df
 
 
+def cash_to_investor(data, payout_ratio):
+    df = data.copy()
+
+    # Reset rates as fraction from percentage
+    payout_ratio /= 100
+
+    # Add a payout ratio to generate dividends
+    df["dividends"] = df["value"] * payout_ratio
+    # Set dividends as cash to investor during period of holding asset
+    df["cash_to_investor"] = df["dividends"]
+    # Set terminal value to cash to investor (do not reduce by payout ratio)
+    mask = df.last_valid_index()
+    df.loc[mask, "cash_to_investor"] = df.loc[mask, "value"]
+
+    return df
+
+
 def pv_calc(data, discount_rate):
     df = data.copy()
 
     # Reset rate as fraction from percentage
     discount_rate /= 100
     # Calculate present value
-    df["PV"] = df["value"] * (1 + discount_rate) ** (
+    df["PV"] = df["cash_to_investor"] * (1 + discount_rate) ** (
         df.loc[df["years"] == 1, "years"].values - df["years"].values - 1
     )
 
     return df
 
 
-def pv_full_output(starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_rate):
+def pv_full_output(
+    starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_rate, payout_ratio
+):
     # Calculate the FCF growth
     df_fcf = growth_calc(starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_rate)
+    # Calculate cash to investor while holding asset (dividends)
+    df_div = cash_to_investor(df_fcf, payout_ratio)
     # Calculate the Present Value
-    df_pv = pv_calc(df_fcf, discount_rate)
+    df_pv = pv_calc(df_div, discount_rate)
     # Set the PV dataframe to a dictionary for ease of manipulation later
     pv_dict = {"full_pv": df_pv}
     return pv_dict
 
 
-def npv_calc(starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_rate):
+def npv_calc(starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_rate, payout_ratio):
     # Calculate the Present Value and set to a dictionary
     pv_dict = pv_full_output(
-        starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_rate
+        starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_rate, payout_ratio
     )
     # Exctract the dataframe and sum the PV
     df_pv = pv_dict["full_pv"]

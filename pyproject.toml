@@ -1,0 +1,15 @@
+[build-system]
+# Minimum requirements for the build system to execute.
+requires = ["setuptools", "wheel", "pipfile"]  # PEP 508 specifications.
+
+[tool.isort]
+profile = "black"
+src_paths = ["src"]
+multi_line_output = 3
+force_grid_wrap = 0
+wrap_length = 100
+line_length = 100
+
+[tool.black]
+line-length = 100
+include = '(src\/.*\.py|tests\/.*\.py|setup.py)'
