@@ -1,5 +1,8 @@
 import imp
 import py_compile
+from re import L
+from site import execsitecustomize
+from xml.dom.minidom import ReadOnlySequentialNamedNodeMap
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,6 +12,7 @@ import yfinance as yf
 
 # Extract most recent closing price from yahoo
 def price(ticker):
+    # TODO: Implement forex calculations
     try:
         company = yf.Ticker(ticker)
         df = company.history(period="1day")
@@ -21,25 +25,54 @@ def price(ticker):
     return price
 
 
-# Load the raw cashflow data and convert to dataframe
-def cashflow_loader(file_path, sheet_name):
+# Load the raw income statement data and convert to dataframe
+def data_loader(file_path, sheet_name, statement_type):
+    # Set number of rows to skip
+    skiprows = 1
+
+    # Set index column
+    if statement_type == "cashflow":
+        index_label = "Cash Flow Statement"
+        target_col = "cash flow per share"
+        renamed_col = "fcf_share"
+    elif statement_type == "income":
+        index_label = "Income Statement"
+        target_col = "dividends per share"
+        renamed_col = "div_share"
+    elif statement_type == "ratios":
+        index_label = "Ratios"
+        target_col = "Return On Equity %"
+        renamed_col = "roe"
+    elif statement_type == "multiples":
+        index_label = "Multiples"
+        target_col = "LTM Book Value per Share"
+        renamed_col = "bv_share"
+        skiprows = 0  # For some reason copy/paste is different here
+    else:
+        raise ("Unexpected financial statement")
+
     # Open the file
-    df = pd.read_excel(file_path, sheet_name=sheet_name, engine="openpyxl", skiprows=1)
-    # Set index column,
-    df.set_index("Cash Flow Statement", inplace=True)
+    df = pd.read_excel(file_path, sheet_name=sheet_name, engine="openpyxl", skiprows=skiprows)
+
+    df.set_index(index_label, inplace=True)
     # Drop LTM if it exists and set the index to years
     df.drop("LTM", axis=1, errors="ignore", inplace=True)
     # Set the index to years
     df.columns = pd.to_datetime(df.columns).year
     df = df.T
+    # Drop NaN column names and then set all column names to lower case
+    mask = pd.isna(df.columns)
+    df = df.loc[:, ~mask]
+    df.columns = [c.lower() for c in df.columns]
     # Rename column
-    df = df.loc[:, ["Cash Flow per Share"]]
-    df.columns = ["FCF_share"]
+    col_name = target_col.lower()
+    df = df.loc[:, [col_name]]
+    df.columns = [renamed_col]
 
     return df
 
 
-def sensitivity_plot(data_dict, company_name, high, mid, low, start_at=None):
+def sensitivity_plot(data_dict, company_name, high, mid, low, forecast_type, start_at=None):
     """
     Sensitivity plot for either fcf or dividend growth
     """
@@ -53,7 +86,16 @@ def sensitivity_plot(data_dict, company_name, high, mid, low, start_at=None):
 
     df = df.loc[df.index >= start_date].copy()
 
-    tag = "FCF_share"
+    # Select FCF or Dividends forecasts
+    if forecast_type == "fcf":
+        tag = "fcf_share"
+    elif forecast_type == "div":
+        tag = "div_share"
+    elif forecast_type == "bv":
+        tag = "bv_share"
+        df = df.groupby(df.index).mean()  # Multiples only quarterly for some reason
+    else:
+        raise ("Incorrect forecast type")
 
     # Generate curves for growth at P10, P50, P90 rates (in percentage)
     df["high"] = df.loc[df.index[0], tag] * (1 + high / 100) ** (df.index - df.index[0])
@@ -71,6 +113,20 @@ def sensitivity_plot(data_dict, company_name, high, mid, low, start_at=None):
     ax[1].set_ylabel("log $/share")
 
     plt.suptitle(f"{company_name}\n High:{high}   Mid:{mid}   Low:{low}")
+
+    plt.show()
+
+
+def plot_financials(data, ticker):
+    fig, ax = plt.subplots(1, 2, figsize=(15, 5))
+
+    data["book_value"].plot(ax=ax[0])
+    data["return_equity"].plot(ax=ax[1])
+
+    ax[0].set_title("Book Value per Share")
+    ax[1].set_title("Return on Equity")
+
+    plt.suptitle(f"{ticker}")
 
     plt.show()
 
@@ -155,5 +211,14 @@ def npv_calc(starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_
     # Exctract the dataframe and sum the PV
     df_pv = pv_dict["full_pv"]
     npv = df_pv["PV"].sum()
+
+    return npv
+
+
+def npv_financials(book_value_per_share, return_on_equity, discount_rate, perpetual_rate):
+    # Use Excess Returns??? for financial and insurance companies
+    excess = (return_on_equity - discount_rate) * book_value_per_share
+    terminal_value = excess / (discount_rate - perpetual_rate)
+    npv = book_value_per_share + terminal_value
 
     return npv
