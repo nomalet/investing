@@ -1,9 +1,3 @@
-import imp
-import py_compile
-from re import L
-from site import execsitecustomize
-from xml.dom.minidom import ReadOnlySequentialNamedNodeMap
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -216,7 +210,7 @@ def npv_calc(starting_fcf, discount_rate, growth_rate1, growth_rate2, perpetual_
 
 
 def npv_financials(book_value_per_share, return_on_equity, discount_rate, perpetual_rate):
-    # Use Excess Returns??? for financial and insurance companies
+    # Use Excess Returns for financial and insurance companies
     excess = (return_on_equity - discount_rate) * book_value_per_share
     terminal_value = excess / (discount_rate - perpetual_rate)
     npv = book_value_per_share + terminal_value
