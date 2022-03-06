@@ -1,4 +1,5 @@
 !src/investor/*
+!data/input_data/*
 *.pyc
 *.nfs*
 *.egg-info
