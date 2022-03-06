@@ -1,0 +1,5 @@
+﻿ticker,name,type,p10_stage1,p10_stage2,p50_stage1,p50_stage2,p90_stage1,p90_stage2,p10_terminal,p50_terminal,p90_terminal,payout_ratio
+BRK-B,Berkshire Hathaway,Insurance,,,,,,,,,,
+MFC,Manulife,Insurance,,,,,,,,,,
+MKL,Markel,Insurance,,,,,,,,,,
+SLF,SunLife,Insurance,,,,,,,,,,

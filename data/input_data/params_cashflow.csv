@@ -1,0 +1,19 @@
+﻿ticker,name,type,p10_stage1,p10_stage2,p50_stage1,p50_stage2,p90_stage1,p90_stage2,p10_terminal,p50_terminal,p90_terminal,payout_ratio
+AAPL,Apple,CashFlow,15,10,5,14,9,4,6,4,2,22
+ACN,Accenture,CashFlow,10,7,4,9,6,3,6,4,2,30
+AMZN,Amazon.com,CashFlow,25,15,5,23,13,3,6,4,2,0
+BABA,Alibaba,CashFlow,25,15,5,23,13,3,6,4,2,0
+COST,Costco,CashFlow,10,7,4,9,6,3,6,4,2,30
+DFS,Discover Financial Services,CashFlow,15,10,5,13,8,3,6,4,2,10
+EBAY,eBay,CashFlow,7,5,3,6,4,2,6,4,2,20
+GOOG,Alphabet,CashFlow,20,15,10,18,13,8,6,4,2,0
+IAG.L,International Consolidated Airlines Group,CashFlow,0,0,0,0,0,0,6,4,2,0
+MA,Mastercard,CashFlow,20,15,10,17,12,7,6,4,2,20
+MELI,MercadoLibre,CashFlow,25,10,-5,23,8,-7,6,4,2,0
+MSFT,Microsoft,CashFlow,10,7,4,8,5,2,6,4,2,30
+NFI.TO,NFI Group,CashFlow,10,7,4,8,5,2,6,4,2,50
+NXPI,NXP Semiconductors,CashFlow,10,7,4,8,5,2,6,4,2,0
+PYPL,PayPal,CashFlow,15,10,5,14,9,4,6,4,2,0
+SAP,Saputo,CashFlow,6,4,3,4,2,1,6,4,2,30
+TDG,TransDigm,CashFlow,12,8,4,11,7,3,6,4,2,0
+V,Visa,CashFlow,25,20,15,22,17,12,6,4,2,20

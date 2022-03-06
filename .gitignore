@@ -47,4 +47,5 @@ mypy
 .vscode
 
 data/*
+!data/input_data/
 !data/input_data/*

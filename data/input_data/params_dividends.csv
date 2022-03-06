@@ -1,0 +1,25 @@
+﻿ticker,name,type,p10_stage1,p10_stage2,p50_stage1,p50_stage2,p90_stage1,p90_stage2,p10_terminal,p50_terminal,p90_terminal,payout_ratio
+AAL.L,AngloAmerican,Dividend,5,5,3,3,0,0,6,4,2,100
+ALA.TO,AltaGas,Dividend,5,6,0,3,-3,0,6,4,2,100
+AQN,Algonquin,Dividend,9,8,7,6,5,4,6,4,2,100
+AY,Atlantica,Dividend,4,3,2,1,0,-1,6,4,2,100
+BEPC,Brookfield Renewable,Dividend,6,5,4,3,2,1,6,4,2,100
+BIPC,Brookfield Infrastructure,Dividend,9,8,7,6,5,4,6,4,2,100
+BP.L,BP,Dividend,5,5,4,4,3,3,6,4,2,100
+BTB-UN.TO,BTB REIT,Dividend,-4,-2,-5,-3,-6,-4,6,4,2,100
+CVX,Chevron,Dividend,9,9,7,7,5,5,6,4,2,100
+ENB,Enbridge,Dividend,10,8,8,6,6,4,6,4,2,100
+FTS,Fortis,Dividend,8,8,6,7,4,3,6,4,2,100
+GLEN.L,Glencore,Dividend,11,9,9,7,7,5,6,4,2,100
+GMRE,Global Medical REIT,Dividend,4,3,2,1,0,-1,6,4,2,100
+RIO,Rio Tinto,Dividend,10,9,7,6,4,3,6,4,2,100
+SHEL,Shell,Dividend,6,6,4,4,2,2,6,4,2,100
+T,AT&T,Dividend,2,2,1,0,0,-1,6,4,2,100
+TRP,TC Energy,Dividend,6,6,4,5,2,1,6,4,2,100
+TU,TELUS,Dividend,7,7,5,6,3,2,6,4,2,100
+XOM,Exxon Mobil,Dividend,9,9,7,7,5,5,6,4,2,100
+BK,Bank of New York Mellon Corporation,Dividend,12,10,10,8,8,6,6,4,2,100
+BLK,BlackRock,Dividend,10,8,8,6,6,4,6,4,2,100
+BMO,Bank of Montreal,Dividend,5,4,4,3,3,2,6,4,2,100
+BNS,Bank of Nova Scotia,Dividend,5,4,4,3,3,2,6,4,2,100
+JPM,JPMorgan,Dividend,15,13,12,10,9,7,6,4,2,100

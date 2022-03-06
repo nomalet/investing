@@ -1,0 +1,47 @@
+﻿ticker,name,type,currency
+AAL.L,AngloAmerican,Dividend,GBP
+AAPL,Apple,CashFlow,USD
+ACN,Accenture,CashFlow,USD
+ALA.TO,AltaGas,Dividend,CAD
+AMZN,Amazon.com,CashFlow,USD
+AQN,Algonquin,Dividend,USD
+AY,Atlantica,Dividend,USD
+BABA,Alibaba,CashFlow,USD
+BEPC,Brookfield Renewable,Dividend,USD
+BIPC,Brookfield Infrastructure,Dividend,USD
+BK,Bank of New York Mellon Corporation,Dividend,USD
+BLK,BlackRock,Dividend,USD
+BMO,Bank of Montreal,Dividend,USD
+BNS,Bank of Nova Scotia,Dividend,USD
+BP.L,BP,Dividend,GBP
+BRK-B,Berkshire Hathaway,Insurance,USD
+BTB-UN.TO,BTB REIT,Dividend,CAD
+COST,Costco,CashFlow,USD
+CVX,Chevron,Dividend,USD
+DFS,Discover Financial Services,CashFlow,USD
+EBAY,eBay,CashFlow,USD
+ENB,Enbridge,Dividend,USD
+FTS,Fortis,Dividend,USD
+GLEN.L,Glencore,Dividend,GBP
+GMRE,Global Medical REIT,Dividend,USD
+GOOG,Alphabet,CashFlow,USD
+IAG.L,International Consolidated Airlines Group,CashFlow,GBP
+JPM,JPMorgan,Dividend,USD
+MA,Mastercard,CashFlow,USD
+MELI,MercadoLibre,CashFlow,USD
+MFC,Manulife,Insurance,USD
+MKL,Markel,Insurance,USD
+MSFT,Microsoft,CashFlow,USD
+NFI.TO,NFI Group,CashFlow,CAD
+NXPI,NXP Semiconductors,CashFlow,USD
+PYPL,PayPal,CashFlow,USD
+RIO,Rio Tinto,Dividend,USD
+SAP,Saputo,CashFlow,USD
+SHEL,Shell,Dividend,USD
+SLF,SunLife,Insurance,USD
+T,AT&T,Dividend,USD
+TDG,TransDigm,CashFlow,USD
+TRP,TC Energy,Dividend,USD
+TU,TELUS,Dividend,USD
+V,Visa,CashFlow,USD
+XOM,Exxon Mobil,Dividend,USD
