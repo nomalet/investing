@@ -1,4 +1,5 @@
 !src/investor/*
+!data/input_data/*
 *.pyc
 *.nfs*
 *.egg-info
@@ -47,4 +48,3 @@ mypy
 .vscode
 
 data/*
-!data/input_data/*
