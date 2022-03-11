@@ -28,3 +28,6 @@ input_data = setpath(data_path / "input_data/")
 output_data = setpath(data_path / "output_data/")
 processed_data = setpath(data_path / "processed_data/")
 financial_statements = setpath(input_data / "raw_statements_data/")
+
+# Path to dashboard
+dashboard = setpath(root / 'dashboards/')

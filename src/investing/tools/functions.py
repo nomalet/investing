@@ -6,7 +6,6 @@ import yfinance as yf
 
 # Extract most recent closing price from yahoo
 def price(ticker):
-    # TODO: Implement forex calculations
     try:
         company = yf.Ticker(ticker)
         df = company.history(period="1day")
