@@ -1,5 +1,5 @@
-﻿ticker,name,type,p10_return_on_equity,p50_return_on_equity,p90_return_on_equity,p10_terminal,p50_terminal,p90_terminal
-BRK-B,Berkshire Hathaway,Insurance,20,15,10,6,4,2
-MFC,Manulife,Insurance,20,15,10,6,4,2
-MKL,Markel,Insurance,20,15,10,6,4,2
-SLF,SunLife,Insurance,20,15,10,6,4,2
+ticker,name,type,currency,p10_return_on_equity,p50_return_on_equity,p90_return_on_equity,p10_terminal,p50_terminal,p90_terminal
+BRK-B,Berkshire Hathaway,Insurance,USD,12.9,9.25,5.6,6,4,2
+MFC,Manulife,Insurance,USD,14.5,10.8,1.4400000000000002,6,4,2
+MKL,Markel,Insurance,USD,17.38,6.9,2.08,6,4,2
+SLF,SunLife,Insurance,USD,13.280000000000001,10.7,4.539999999999999,6,4,2
